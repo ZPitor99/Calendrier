@@ -1,0 +1,46 @@
+.root {
+    -fx-padding: 15;
+    -fx-background-color: aliceblue;
+}
+
+.label {
+    -fx-text-fill: #4682b4;
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bold;
+}
+
+#today {
+    -fx-text-fill: coral;
+}
+
+#mois {
+    -fx-text-fill: Green;
+}
+
+#moisFinSemaine {
+    -fx-text-fill: Green;
+    -fx-border-color: wheat;
+    -fx-background-color: wheat;
+}
+
+#autreMois {
+    -fx-text-fill: black;
+}
+
+#autreMoisFinSemaine {
+    -fx-text-fill: black;
+    -fx-border-color: wheat;
+    -fx-background-color: wheat;
+}
+
+#bouton {
+    -fx-background-color: aliceblue;
+    -fx-border-color: #4682b4;
+    -fx-font-weight: bold;
+    -fx-border-radius: 0.5em;
+}
+
+.scroll-pane {
+    -fx-background: ghostwhite;
+    -fx-border-color: #5F9EA0;
+}
