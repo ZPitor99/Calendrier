@@ -2,20 +2,24 @@ package vue;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
 import java.io.File;
+import java.util.Objects;
 
 public class ClientApplication extends Application {
+    @Override
     public void start(Stage stage) {
-        VBox root = new VBoxRoot();
-        Scene scene = new Scene(root, 1000, 700);
+        HBox root = new HBoxRoot();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("ClienApplication");
+        stage.setTitle("Calendrier Théatre");
         stage.setResizable(false);
         File css = new File("css" + File.separator + "style.css");
         scene.getStylesheets().add(css.toURI().toString());
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/logo.png"))));
         stage.show();
     }
 
