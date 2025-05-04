@@ -20,7 +20,7 @@ public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
         super(10);
         this.setPrefSize(300, 400);
         DateCalendrier today = new DateCalendrier();
-        String todayStr = JOURS_SEMAINE[today.getJourSemaine()] + " " + today.getJour() + " " + MOIS[today.getMois() - 1] + " " + today.getAnnee();
+        String todayStr = JOURS_SEMAINE[today.getJourSemaine() - 1] + " " + today.getJour() + " " + MOIS[today.getMois() - 1] + " " + today.getAnnee();
         Label dateToday = new Label(todayStr);
         dateToday.setStyle("-fx-font-weight: bold; -fx-font-size: 18px;");
         this.getChildren().add(dateToday);
@@ -97,8 +97,8 @@ public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
         //---
 
         List<Node> liste = stackPaneMois.getChildren();
-        while (! Objects.equals(liste.getFirst().getAccessibleText(), MOIS[new DateCalendrier().getMois()])) {
-            liste.getFirst().toFront();
+        while (! Objects.equals(liste.get(0).getAccessibleText(), MOIS[new DateCalendrier().getMois()])) {
+            liste.get(0).toFront();
         }
 
         HBox hbox = new HBox(10);
@@ -108,8 +108,8 @@ public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
         boutonStart.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent actionEvent) {
                 System.out.println("bouton start");
-                while (! Objects.equals(liste.getFirst().getAccessibleText(), MOIS[1])) {
-                    liste.getLast().toBack();
+                while (! Objects.equals(liste.get(0).getAccessibleText(), MOIS[1])) {
+                    liste.get(liste.size() - 1).toBack();
                 }
             }
         });
@@ -121,7 +121,7 @@ public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
         boutonBefore.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent actionEvent) {
                 System.out.println("bouton before");
-                liste.getLast().toBack();
+                liste.get(liste.size() - 1).toBack();
             }
         });
         boutonBefore.setId("bouton");
@@ -132,7 +132,7 @@ public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
         boutonNext.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent actionEvent) {
                 System.out.println("bouton next");
-                liste.getFirst().toFront();
+                liste.get(0).toFront();
             }
         });
         boutonNext.setId("bouton");
@@ -143,8 +143,8 @@ public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
         boutonEnd.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent actionEvent) {
                 System.out.println("bouton end");
-                while (! Objects.equals(liste.getFirst().getAccessibleText(), MOIS[0])) {
-                    liste.getFirst().toFront();
+                while (! Objects.equals(liste.get(0).getAccessibleText(), MOIS[0])) {
+                    liste.get(0).toFront();
                 }
             }
         });

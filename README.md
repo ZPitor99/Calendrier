@@ -19,6 +19,11 @@ Une application de gestion de calendrier développée en Java avec JavaFX. Cette
    ```
    mvn clean package
    ```
+   Puis simplement:
+   ```
+   mvn javafx:run
+   ```
+Alternative:
 5. Créez un script batch (Windows) pour lancer l'application :
    
    ```batch
