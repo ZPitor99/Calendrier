@@ -9,4 +9,5 @@ module org.example.deuxiemeprojet {
 
     exports vue;
     exports modele;
+    exports controleur;
 }
