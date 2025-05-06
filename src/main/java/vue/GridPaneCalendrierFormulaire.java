@@ -24,7 +24,7 @@ public class GridPaneCalendrierFormulaire extends GridPane {
 
     public GridPaneCalendrierFormulaire() {
         super();
-        this.setGridLinesVisible(true);
+        this.setGridLinesVisible(false);
         this.setVgap(10);
         this.setHgap(10);
         this.setPrefSize(380, 400);
@@ -104,7 +104,7 @@ public class GridPaneCalendrierFormulaire extends GridPane {
         this.add(nomSeanceField, 1, 1, 4, 1);
 
         this.add(date, 0, 2);
-        this.add(dateClique, 1, 2, 3,1);
+        this.add(dateClique, 1, 2, 3, 1);
 
         this.add(emplacement, 0, 3);
         this.add(hbNiveau, 1, 3, 4, 1);
