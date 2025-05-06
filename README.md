@@ -1,6 +1,9 @@
 ﻿# Calendrier
 
-Une application de gestion de calendrier développée en Java avec JavaFX. Cette application permet aux utilisateurs de gérer leurs événements, rendez-vous et tâches au quotidien avec une interface graphique intuitive.
+Une application de gestion de calendrier développée en Java avec JavaFX. Cette application permet aux utilisateurs de gérer des réservations de théatre avec la mise à disposition d'un calendrier, et de selecteurs pour que l'utilisateur puisse définir ses réversations. Ceci sur une IHM intéractive.
+Développé avec une architecture modèle-vue-contrôleur.
+
+*Application en cours de création, stade 2/3*
 
 ## Prérequis
 
@@ -9,9 +12,9 @@ Une application de gestion de calendrier développée en Java avec JavaFX. Cette
 
 ## Installation
 
-### Option 1 : Télécharger et installer JavaFX (recommandé)
+### Option 1 : Télécharger et installer JavaFX et Maven (recommandé)
 
-1. Téléchargez JavaFX SDK depuis [https://gluonhq.com/products/javafx/](https://gluonhq.com/products/javafx/)
+1. Téléchargez JavaFX SDK depuis [https://gluonhq.com/products/javafx/](https://gluonhq.com/products/javafx/) et Maven depuis [https://maven.apache.org/download.cgi](https://maven.apache.org/download.cgi)
 2. Extrayez l'archive téléchargée dans un dossier de votre choix
 3. Clonez ce dépôt Git ou téléchargez-le en ZIP
 4. Compilez le projet avec Maven :
