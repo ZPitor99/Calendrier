@@ -15,6 +15,8 @@ import modele.*;
 import java.util.List;
 import java.util.Objects;
 
+import static vue.HBoxRoot.getChefOrchestre;
+
 public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
     public VBoxCalendrier() {
         super(10);
@@ -67,12 +69,14 @@ public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
 
                 //Associer le Togglebouton, utilise par la suite
                 boutonDate.setUserData(date);
-                boutonDate.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        System.out.println(boutonDate.getUserData());
-                    }
-                });
+//                boutonDate.setOnAction(new EventHandler<ActionEvent>() {
+//                    @Override
+//                    public void handle(ActionEvent event) {
+//
+//                    }
+//                });
+
+                boutonDate.addEventHandler(ActionEvent.ACTION, getChefOrchestre());
 
                 compteurNBJ++;
             }

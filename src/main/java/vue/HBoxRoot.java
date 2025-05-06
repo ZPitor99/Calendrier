@@ -14,14 +14,18 @@ public class HBoxRoot extends HBox {
 
     public HBoxRoot() {
         super(25);
-        this.getChildren().add(this.calendrierPane);
-        this.getChildren().add(this.revervasionPane);
+        this.getChildren().add(calendrierPane);
+        this.getChildren().add(revervasionPane);
         this.setAlignment(Pos.CENTER);
         this.setSpacing(25);
     }
 
     public static PlanningCollections getPlanning() {
         return planningReservation;
+    }
+
+    public static Controleur getChefOrchestre() {
+        return chefOrchestre;
     }
 
     public static VBoxCalendrier getCalendrierPane() {
@@ -32,7 +36,4 @@ public class HBoxRoot extends HBox {
         return revervasionPane;
     }
 
-    public static Controleur getChefOrchestre() {
-        return chefOrchestre;
-    }
 }
