@@ -1,12 +1,12 @@
 package controleur;
 
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
@@ -45,7 +45,7 @@ public class Controleur implements EventHandler {
             Horaire debutSeance = new Horaire(HBoxRoot.getRevervasionPane().getComboBoxHeureDebut(), HBoxRoot.getRevervasionPane().getComboBoxMinutesDebut());
             Horaire finSeance = new Horaire(HBoxRoot.getRevervasionPane().getComboBoxHeureFin(), HBoxRoot.getRevervasionPane().getComboBoxMinutesFin());
             String[] words = HBoxRoot.getRevervasionPane().dateClique.getText().split(" ");
-            selDate = new DateCalendrier(Integer.parseInt(words[1]), IndexMois(words[2], MOIS)+1, Integer.parseInt(words[3]));
+            selDate = new DateCalendrier(Integer.parseInt(words[1]), IndexMois(words[2], MOIS) + 1, Integer.parseInt(words[3]));
             try {
                 PlageHoraire maSeance = new PlageHoraire(debutSeance, finSeance);
                 Reservation SeanceTheatre = new Reservation(selDate, maSeance, nomSeance);
@@ -60,11 +60,11 @@ public class Controleur implements EventHandler {
 
     public int IndexMois(String mois, String[] tab) {
         for (int i = 0; i < tab.length; i++) {
-            if (Objects.equals(tab[i], mois)){
+            if (Objects.equals(tab[i], mois)) {
                 return i;
             }
         }
-        return -1;
+        return - 1;
     }
 
     public void ajoutSeance(Reservation seanceTheatre) {
@@ -80,15 +80,9 @@ public class Controleur implements EventHandler {
 
         TextFlow textFlow = new TextFlow();
         textFlow.setPrefWidth(360); // Largeur adaptée au texte
+        textFlow.getStyleClass().add("popup-text");
 
-        textFlow.setStyle("    -fx-background-color: white;\n" +
-                "    -fx-border-color: #4682b4;\n" +
-                "    -fx-border-radius: 5;\n" +
-                "    -fx-padding: 10;\n" +
-                "    -fx-font-size: 14px;\n" +
-                "    -fx-text-fill: #4682b4;");
-
-        Text infoText = new Text("La réservation " + seanceTheatre.toStringAjout().get(0) + " a été ajoutée\n" + seanceTheatre.toStringAjout().get(1) + " de " + seanceTheatre.toStringAjout().get(2));
+        Text infoText = new Text("La réservation " + seanceTheatre.toStringAjout().get(0) + " a été ajoutée.\n" + "Le " + seanceTheatre.toStringAjout().get(1) + " de " + seanceTheatre.toStringAjout().get(2));
         infoText.setStyle("-fx-fill: #4682b4; -fx-font-size: 14px;");
 
         textFlow.getChildren().add(infoText);
@@ -99,8 +93,9 @@ public class Controleur implements EventHandler {
         HBox boutons = new HBox(15);
         boutons.setAlignment(Pos.CENTER);
 
-        Button btnAnnuler = new Button("Fermer");
-        btnAnnuler.setStyle("-fx-focus-color: #3c5a73;");
+        Button btnAnnuler = new Button("_Fermer");
+        Platform.runLater(btnAnnuler::requestFocus);
+        btnAnnuler.setMnemonicParsing(true);
 
         btnAnnuler.setOnAction(e -> popup.close());
 
@@ -109,6 +104,8 @@ public class Controleur implements EventHandler {
         popupRoot.getChildren().addAll(boutons);
 
         Scene popupScene = new Scene(popupRoot, 400, 300);
+        File css = new File("css" + File.separator + "style.css");
+        popupScene.getStylesheets().add(css.toURI().toString());
         popup.setScene(popupScene);
         popup.showAndWait();
     }
