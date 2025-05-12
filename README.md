@@ -3,7 +3,7 @@
 Une application de gestion de calendrier développée en Java avec JavaFX. Cette application permet aux utilisateurs de gérer des réservations de théatre avec la mise à disposition d'un calendrier, et de selecteurs pour que l'utilisateur puisse définir ses réversations. Ceci sur une IHM intéractive.
 Développé avec une architecture modèle-vue-contrôleur.
 
-![Image fenêtre principale](src/main/resources/readmeimg.jpg)
+![Image fenêtre principale](src/main/resources/readmeImg.jpg)
 
 
 ## Prérequis
