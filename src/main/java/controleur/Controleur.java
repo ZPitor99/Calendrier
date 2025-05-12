@@ -31,7 +31,7 @@ public class Controleur implements EventHandler {
         PlanningCollections planning = HBoxRoot.getPlanning();
         GridPaneCalendrierFormulaire reservationPane = HBoxRoot.getRevervasionPane();
 
-        DateCalendrier selDate = new DateCalendrier();
+        DateCalendrier selDate;
 
         if (event.getSource() instanceof ToggleButton) {
             ToggleButton clikedButton = (ToggleButton) event.getSource();
@@ -78,6 +78,7 @@ public class Controleur implements EventHandler {
         popupRoot.setPadding(new Insets(20));
         popupRoot.setAlignment(Pos.CENTER);
 
+        //Texte de la réservation faite
         TextFlow textFlow = new TextFlow();
         textFlow.setPrefWidth(360); // Largeur adaptée au texte
         textFlow.getStyleClass().add("popup-text");
@@ -89,7 +90,7 @@ public class Controleur implements EventHandler {
         popupRoot.getChildren().add(textFlow);
 
 
-        // Boutons annuler
+        // Boutons fermer
         HBox boutons = new HBox(15);
         boutons.setAlignment(Pos.CENTER);
 

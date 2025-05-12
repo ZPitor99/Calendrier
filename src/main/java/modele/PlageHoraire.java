@@ -6,10 +6,10 @@ public class PlageHoraire implements Comparable<PlageHoraire> {
     private Horaire horaireFin;
 
     public PlageHoraire(Horaire deb, Horaire fin) throws ExceptionPlanning {
-        if(deb == null || fin == null){
+        if (deb == null || fin == null) {
             throw new ExceptionPlanning(0);
         }
-        if (fin.toMinutes() - deb.toMinutes()<DUREE_MINIMAL) {
+        if (fin.toMinutes() - deb.toMinutes() < DUREE_MINIMAL) {
             throw new ExceptionPlanning(0);
         }
         horaireDebut = deb;
@@ -17,12 +17,13 @@ public class PlageHoraire implements Comparable<PlageHoraire> {
     }
 
     public String toString() {
-        return horaireDebut.toString() + " à " + horaireFin.toString() + ", duree: " + this.duree()/60+ " h " + this.duree()%60 + " min";
+        return horaireDebut.toString() + " à " + horaireFin.toString() + ", duree: " + this.duree() / 60 + " h " + this.duree() % 60 + " min";
     }
 
     public Horaire getHoraireDebut() {
         return horaireDebut;
     }
+
     public Horaire getHoraireFin() {
         return horaireFin;
     }
@@ -30,6 +31,7 @@ public class PlageHoraire implements Comparable<PlageHoraire> {
 
     /**
      * estValide retourne true si la plage horaire (objet appelant) est valide, false sinon
+     *
      * @return boolean
      */
     public boolean estValide() {

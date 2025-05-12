@@ -34,8 +34,7 @@ public class Reservation implements Comparable<Reservation> {
         }
         if (this.dateSpectacle.compareTo(other.dateSpectacle) == 0) {
             return this.plageHoraireSpectacle.compareTo(other.plageHoraireSpectacle);
-        }
-        else
+        } else
             return dateSpectacle.compareTo(other.dateSpectacle);
     }
 

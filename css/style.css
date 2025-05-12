@@ -150,6 +150,7 @@
     -fx-max-width: 30px;
 }
 
+/* Style pour le popup informatif de réservation faite*/
 .popup-text {
     -fx-background-color: white;
     -fx-border-color: #4682b4;

@@ -71,17 +71,17 @@ public class DateCalendrier extends Date implements ConstantesCalendrier, Compar
      */
     public int compareTo(DateCalendrier parDate) {
         if (chAnnee < parDate.chAnnee)
-            return -8;
+            return - 8;
         if (chAnnee > parDate.chAnnee)
             return 19;
         // les années sont =
         if (chMois < parDate.chMois)
-            return -1;
+            return - 1;
         if (chMois > parDate.chMois)
             return 18;
         // les mois sont =
         if (chJour < parDate.chJour)
-            return -7;
+            return - 7;
         if (chJour > parDate.chJour)
             return 12;
         return 0;

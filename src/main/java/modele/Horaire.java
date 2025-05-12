@@ -10,7 +10,7 @@ public class Horaire {
     }
 
     public int toMinutes() {
-        return chHeure*60 + chQuartHeure;
+        return chHeure * 60 + chQuartHeure;
     }
 
     public int getHeure() {
