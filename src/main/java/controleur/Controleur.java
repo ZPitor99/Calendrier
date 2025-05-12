@@ -2,11 +2,27 @@ package controleur;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import modele.*;
 import vue.GridPaneCalendrierFormulaire;
 import vue.HBoxRoot;
+
+import java.io.File;
+import java.util.Objects;
+
+import static modele.ConstantesCalendrier.MOIS;
 
 public class Controleur implements EventHandler {
 
@@ -28,14 +44,72 @@ public class Controleur implements EventHandler {
             String nomSeance = HBoxRoot.getRevervasionPane().getNomSeance();
             Horaire debutSeance = new Horaire(HBoxRoot.getRevervasionPane().getComboBoxHeureDebut(), HBoxRoot.getRevervasionPane().getComboBoxMinutesDebut());
             Horaire finSeance = new Horaire(HBoxRoot.getRevervasionPane().getComboBoxHeureFin(), HBoxRoot.getRevervasionPane().getComboBoxMinutesFin());
+            String[] words = HBoxRoot.getRevervasionPane().dateClique.getText().split(" ");
+            selDate = new DateCalendrier(Integer.parseInt(words[1]), IndexMois(words[2], MOIS)+1, Integer.parseInt(words[3]));
             try {
                 PlageHoraire maSeance = new PlageHoraire(debutSeance, finSeance);
                 Reservation SeanceTheatre = new Reservation(selDate, maSeance, nomSeance);
+                System.out.println(SeanceTheatre);
+                planning.ajout(SeanceTheatre);
+                ajoutSeance(SeanceTheatre);
             } catch (ExceptionPlanning e) {
                 throw new RuntimeException(e);
             }
-
         }
     }
 
+    public int IndexMois(String mois, String[] tab) {
+        for (int i = 0; i < tab.length; i++) {
+            if (Objects.equals(tab[i], mois)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void ajoutSeance(Reservation seanceTheatre) {
+        // Information sur l'ajout
+        Stage popup = new Stage();
+        popup.initModality(Modality.APPLICATION_MODAL); // Bloque l'interaction avec la fenêtre principale
+        popup.setTitle("Information");
+        popup.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/logo.png"))));
+
+        VBox popupRoot = new VBox(15);
+        popupRoot.setPadding(new Insets(20));
+        popupRoot.setAlignment(Pos.CENTER);
+
+        TextFlow textFlow = new TextFlow();
+        textFlow.setPrefWidth(360); // Largeur adaptée au texte
+
+        textFlow.setStyle("    -fx-background-color: white;\n" +
+                "    -fx-border-color: #4682b4;\n" +
+                "    -fx-border-radius: 5;\n" +
+                "    -fx-padding: 10;\n" +
+                "    -fx-font-size: 14px;\n" +
+                "    -fx-text-fill: #4682b4;");
+
+        Text infoText = new Text("La réservation " + seanceTheatre.toStringAjout().get(0) + " a été ajoutée\n" + seanceTheatre.toStringAjout().get(1) + " de " + seanceTheatre.toStringAjout().get(2));
+        infoText.setStyle("-fx-fill: #4682b4; -fx-font-size: 14px;");
+
+        textFlow.getChildren().add(infoText);
+        popupRoot.getChildren().add(textFlow);
+
+
+        // Boutons annuler
+        HBox boutons = new HBox(15);
+        boutons.setAlignment(Pos.CENTER);
+
+        Button btnAnnuler = new Button("Fermer");
+        btnAnnuler.setStyle("-fx-focus-color: #3c5a73;");
+
+        btnAnnuler.setOnAction(e -> popup.close());
+
+        boutons.getChildren().addAll(btnAnnuler);
+
+        popupRoot.getChildren().addAll(boutons);
+
+        Scene popupScene = new Scene(popupRoot, 400, 300);
+        popup.setScene(popupScene);
+        popup.showAndWait();
+    }
 }

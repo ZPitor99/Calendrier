@@ -1,7 +1,7 @@
 package modele;
 
-import modele.ExceptionPlanning;
-import modele.PlageHoraire;
+import java.util.Arrays;
+import java.util.List;
 
 public class Reservation implements Comparable<Reservation> {
     private Date dateSpectacle;
@@ -20,6 +20,10 @@ public class Reservation implements Comparable<Reservation> {
     @Override
     public String toString() {
         return TitreSpectacle + ": " + "le " + dateSpectacle + " de " + plageHoraireSpectacle;
+    }
+
+    public List<Object> toStringAjout() {
+        return Arrays.asList(TitreSpectacle, dateSpectacle, plageHoraireSpectacle);
     }
 
 

@@ -66,7 +66,7 @@ public class PlanningCollections {
     }
 
     /**
-     * getreservation renvoie un treeSet qui contient les reservations de fait à la date
+     * getReservation renvoie un treeSet qui contient les reservations de fait à la date
      * de parDate, null si aucune reservation à cette date
      * @param parDate
      * @return reservationParDate

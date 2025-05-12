@@ -63,8 +63,28 @@ public class DateCalendrier extends Date implements ConstantesCalendrier, Compar
         return new DateCalendrier(dateVeille.chJour, dateVeille.chMois, dateVeille.chAnnee);
     }
 
-    //@Override
-    //public int compareTo(Date o) {
-    //	return 0;
-    //}
+    /**
+     * compare les dates this et parDate
+     * retourne 0 si this et parDate sont égales
+     * retroune un entier négatif si this est antérieure à parDate
+     * retourne un entier positif si this es postérieure à parDate
+     */
+    public int compareTo(DateCalendrier parDate) {
+        if (chAnnee < parDate.chAnnee)
+            return -8;
+        if (chAnnee > parDate.chAnnee)
+            return 19;
+        // les années sont =
+        if (chMois < parDate.chMois)
+            return -1;
+        if (chMois > parDate.chMois)
+            return 18;
+        // les mois sont =
+        if (chJour < parDate.chJour)
+            return -7;
+        if (chJour > parDate.chJour)
+            return 12;
+        return 0;
+    }
+
 }

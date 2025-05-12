@@ -153,4 +153,5 @@ public class GridPaneCalendrierFormulaire extends GridPane {
     public Integer getComboBoxMinutesFin() {
         return comboBoxMinutesFin.getValue();
     }
+
 }
