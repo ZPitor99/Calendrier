@@ -11,11 +11,13 @@ public class HBoxRoot extends HBox {
     private static Controleur chefOrchestre = new Controleur();
     private static VBoxCalendrier calendrierPane = new VBoxCalendrier();
     private static GridPaneCalendrierFormulaire revervasionPane = new GridPaneCalendrierFormulaire();
+    private static VBoxAffichagePlanning affichagePlanning = new VBoxAffichagePlanning();
 
     public HBoxRoot() {
         super(25);
         this.getChildren().add(calendrierPane);
         this.getChildren().add(revervasionPane);
+        this.getChildren().add(affichagePlanning);
         this.setAlignment(Pos.CENTER);
         this.setSpacing(25);
     }
@@ -34,6 +36,10 @@ public class HBoxRoot extends HBox {
 
     public static GridPaneCalendrierFormulaire getRevervasionPane() {
         return revervasionPane;
+    }
+
+    public static VBoxAffichagePlanning getAffichagePlanning() {
+        return affichagePlanning;
     }
 
 }

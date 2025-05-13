@@ -24,13 +24,14 @@ public class GridPaneCalendrierFormulaire extends GridPane {
 
     public GridPaneCalendrierFormulaire() {
         super();
-        this.setGridLinesVisible(false);
+        this.setGridLinesVisible(true);
         this.setVgap(10);
         this.setHgap(10);
-        this.setPrefSize(380, 400);
+        this.setPrefSize(400, 400);
 
         //Déclaration et instanciation
         Label titre = new Label("Nouvelle reservation");
+        titre.setAlignment(Pos.CENTER);
         titre.setStyle("-fx-font-weight: bold; -fx-font-size: 18px;");
         Label nomSeance = new Label("_Nom Seance");
 
@@ -40,6 +41,7 @@ public class GridPaneCalendrierFormulaire extends GridPane {
         Platform.runLater(nomSeanceField::requestFocus);
 
         Label date = new Label("Date choisie");
+        dateClique.setStyle("-fx-font-weight: 400;");
 
         Label emplacement = new Label("Emplacement");
         final String[] NIVEAUX = {"Balcon", "Loge", "Galerie"};
@@ -84,6 +86,7 @@ public class GridPaneCalendrierFormulaire extends GridPane {
             comboBoxHeureDebut.getSelectionModel().selectFirst();
             comboBoxMinutesDebut.getSelectionModel().selectFirst();
             comboBoxHeureFin.getSelectionModel().selectFirst();
+            comboBoxHeureFin.getSelectionModel().selectNext();
             comboBoxMinutesFin.getSelectionModel().selectFirst();
         });
 
@@ -104,7 +107,7 @@ public class GridPaneCalendrierFormulaire extends GridPane {
         this.add(nomSeanceField, 1, 1, 4, 1);
 
         this.add(date, 0, 2);
-        this.add(dateClique, 1, 2, 3, 1);
+        this.add(dateClique, 1, 2, 4, 1);
 
         this.add(emplacement, 0, 3);
         this.add(hbNiveau, 1, 3, 4, 1);

@@ -17,7 +17,7 @@ public class PlageHoraire implements Comparable<PlageHoraire> {
     }
 
     public String toString() {
-        return horaireDebut.toString() + " à " + horaireFin.toString() + ", duree: " + this.duree() / 60 + " h " + this.duree() % 60 + " min";
+        return horaireDebut.toString() + " à " + horaireFin.toString() + ",\nDurée: " + this.duree() / 60 + " h " + this.duree() % 60 + " min";
     }
 
     public Horaire getHoraireDebut() {

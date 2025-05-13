@@ -69,12 +69,6 @@ public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
 
                 //Associer le Togglebouton, utilise par la suite
                 boutonDate.setUserData(date);
-//                boutonDate.setOnAction(new EventHandler<ActionEvent>() {
-//                    @Override
-//                    public void handle(ActionEvent event) {
-//
-//                    }
-//                });
 
                 boutonDate.addEventHandler(ActionEvent.ACTION, getChefOrchestre());
 

@@ -18,7 +18,7 @@
 /* Style pour les boutons du jour actuel dans le calendrier */
 #boutonCalendrierToday {
     -fx-text-fill: #2B506E;
-    -fx-font-weight: bold;
+    -fx-font-weight: bolder;
 }
 
 /* Style pour les labels simples (heures, minutes) */
@@ -114,6 +114,7 @@
 .combo-box, .text-field {
     -fx-border-width: 1px;
     -fx-border-color: #2B506E;
+    -fx-padding: 2px;
 }
 
 /* Style de focus pour les combo-box, champs texte et boutons radio */
@@ -158,4 +159,5 @@
     -fx-padding: 10;
     -fx-font-size: 14px;
     -fx-text-fill: #4682b4;
+    -fx-font-weight: 800;
 }

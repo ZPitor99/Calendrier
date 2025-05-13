@@ -37,24 +37,27 @@ public class Controleur implements EventHandler {
             ToggleButton clikedButton = (ToggleButton) event.getSource();
             selDate = (DateCalendrier) clikedButton.getUserData();
             HBoxRoot.getRevervasionPane().dateClique.setText(selDate.toString());
+            HBoxRoot.getAffichagePlanning().numSemaine.setText(jourSemainePetit(String.valueOf(selDate.getWeekOfYear())));
         }
 
         if (event.getSource() instanceof Button) {
-            Button clikedButton = (Button) event.getSource();
+            // Récupération
             String nomSeance = HBoxRoot.getRevervasionPane().getNomSeance();
             Horaire debutSeance = new Horaire(HBoxRoot.getRevervasionPane().getComboBoxHeureDebut(), HBoxRoot.getRevervasionPane().getComboBoxMinutesDebut());
             Horaire finSeance = new Horaire(HBoxRoot.getRevervasionPane().getComboBoxHeureFin(), HBoxRoot.getRevervasionPane().getComboBoxMinutesFin());
             String[] words = HBoxRoot.getRevervasionPane().dateClique.getText().split(" ");
-            selDate = new DateCalendrier(Integer.parseInt(words[1]), IndexMois(words[2], MOIS) + 1, Integer.parseInt(words[3]));
+            // Création
             try {
+                selDate = new DateCalendrier(Integer.parseInt(words[1]), IndexMois(words[2], MOIS) + 1, Integer.parseInt(words[3]));
                 PlageHoraire maSeance = new PlageHoraire(debutSeance, finSeance);
                 Reservation SeanceTheatre = new Reservation(selDate, maSeance, nomSeance);
-                System.out.println(SeanceTheatre);
                 planning.ajout(SeanceTheatre);
                 ajoutSeance(SeanceTheatre);
             } catch (ExceptionPlanning e) {
                 throw new RuntimeException(e);
             }
+            // Affichage
+            HBoxRoot.getAffichagePlanning().numSemaine.setText(jourSemainePetit(String.valueOf(selDate.getWeekOfYear())));
         }
     }
 
@@ -64,7 +67,13 @@ public class Controleur implements EventHandler {
                 return i;
             }
         }
-        return - 1;
+        return -1;
+    }
+
+    private String jourSemainePetit(String semaine) {
+        if (semaine.length() < 2)
+            return "Semaine 0" + semaine;
+        return "Semaine " + semaine;
     }
 
     public void ajoutSeance(Reservation seanceTheatre) {
@@ -83,7 +92,7 @@ public class Controleur implements EventHandler {
         textFlow.setPrefWidth(360); // Largeur adaptée au texte
         textFlow.getStyleClass().add("popup-text");
 
-        Text infoText = new Text("La réservation " + seanceTheatre.toStringAjout().get(0) + " a été ajoutée.\n" + "Le " + seanceTheatre.toStringAjout().get(1) + " de " + seanceTheatre.toStringAjout().get(2));
+        Text infoText = new Text("La réservation " + seanceTheatre.toStringAjout().get(0) + " a été ajoutée.\n" + "Le " + seanceTheatre.toStringAjout().get(1) + " de " + seanceTheatre.toStringAjout().get(2) + ".");
         infoText.setStyle("-fx-fill: #4682b4; -fx-font-size: 14px;");
 
         textFlow.getChildren().add(infoText);
@@ -104,7 +113,7 @@ public class Controleur implements EventHandler {
 
         popupRoot.getChildren().addAll(boutons);
 
-        Scene popupScene = new Scene(popupRoot, 400, 300);
+        Scene popupScene = new Scene(popupRoot, 400, 200);
         File css = new File("css" + File.separator + "style.css");
         popupScene.getStylesheets().add(css.toURI().toString());
         popup.setScene(popupScene);
