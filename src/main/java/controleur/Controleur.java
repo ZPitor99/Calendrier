@@ -71,7 +71,7 @@ public class Controleur implements EventHandler {
                 return i;
             }
         }
-        return -1;
+        return - 1;
     }
 
     private String jourSemainePetit(String semaine) {

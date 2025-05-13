@@ -8,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
-
 import static modele.ConstantesCalendrier.HEURES;
 import static modele.ConstantesCalendrier.MINUTES;
 import static vue.HBoxRoot.getChefOrchestre;

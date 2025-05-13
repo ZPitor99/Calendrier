@@ -161,3 +161,60 @@
     -fx-text-fill: #4682b4;
     -fx-font-weight: 800;
 }
+
+.planning-table {
+    -fx-background-color: #f5f8ff;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
+
+.planning-table .column-header {
+    -fx-background-color: #4a7fb5;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 5px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 0 1px 1px 0;
+    -fx-alignment: center;
+}
+
+.planning-table .table-row-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #eeeeee;
+    -fx-border-width: 0 0 1px 0;
+    -fx-min-height: 50px;
+    -fx-pref-height: 50px;
+}
+
+.planning-table .table-row-cell:odd {
+    -fx-background-color: #f0f5ff;
+}
+
+.planning-table .table-row-cell:hover {
+    -fx-background-color: #e0e8ff;
+}
+
+.planning-table .table-cell {
+    -fx-padding: 8px;
+    -fx-alignment: center-left;
+    -fx-wrap-text: true;
+    -fx-text-overrun: clip;
+    -fx-height: auto;
+}
+
+/* Ajuster les styles spécifiques aux colonnes si nécessaire */
+.planning-table .table-column:nth-child(1) {
+    -fx-alignment: center-left;
+}
+
+.planning-table .table-column:nth-child(2) {
+    -fx-alignment: center;
+}
+
+.planning-table .table-column:nth-child(3) {
+    -fx-alignment: center;
+}
+
+.planning-table .table-column:nth-child(4) {
+    -fx-alignment: center-right;
+}
