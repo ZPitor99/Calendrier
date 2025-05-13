@@ -13,7 +13,7 @@ import modele.*;
 
 public class VBoxAffichagePlanning extends VBox {
 
-    public Label numSemaine = new Label("Semaine 00");
+    public Label numSemaine = new Label("Semaine " + new DateCalendrier().getWeekOfYear());
     public TableView<Reservation> tableDesReservations = new TableView<>();
 
     public VBoxAffichagePlanning() throws ExceptionPlanning {
