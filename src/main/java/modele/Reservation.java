@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Reservation implements Comparable<Reservation> {
-    private Date dateSpectacle;
+    private DateCalendrier dateSpectacle;
     private PlageHoraire plageHoraireSpectacle;
     private String TitreSpectacle;
 
-    public Reservation(Date parDateSpectacle, PlageHoraire parPlageHoraireSpectacle, String parTitreSpectacle) throws ExceptionPlanning {
+    public Reservation(DateCalendrier parDateSpectacle, PlageHoraire parPlageHoraireSpectacle, String parTitreSpectacle) throws ExceptionPlanning {
         if (parTitreSpectacle == null) {
             throw new ExceptionPlanning(0);
         }
@@ -38,15 +38,15 @@ public class Reservation implements Comparable<Reservation> {
             return dateSpectacle.compareTo(other.dateSpectacle);
     }
 
-    public Date getDateSpectacle() {
+    public DateCalendrier getDate() {
         return dateSpectacle;
     }
 
-    public PlageHoraire getPlageHoraire() {
+    public PlageHoraire getHoraire() {
         return plageHoraireSpectacle;
     }
 
-    public String getTitreSpectacle() {
+    public String getSceance() {
         return TitreSpectacle;
     }
 

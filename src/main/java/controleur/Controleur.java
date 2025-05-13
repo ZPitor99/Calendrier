@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import modele.*;
 import vue.GridPaneCalendrierFormulaire;
 import vue.HBoxRoot;
+import vue.VBoxAffichagePlanning;
 
 import java.io.File;
 import java.util.Objects;
@@ -30,6 +31,7 @@ public class Controleur implements EventHandler {
     public void handle(Event event) {
         PlanningCollections planning = HBoxRoot.getPlanning();
         GridPaneCalendrierFormulaire reservationPane = HBoxRoot.getRevervasionPane();
+        VBoxAffichagePlanning affichagePlanning = HBoxRoot.getAffichagePlanning();
 
         DateCalendrier selDate;
 
@@ -38,6 +40,7 @@ public class Controleur implements EventHandler {
             selDate = (DateCalendrier) clikedButton.getUserData();
             HBoxRoot.getRevervasionPane().dateClique.setText(selDate.toString());
             HBoxRoot.getAffichagePlanning().numSemaine.setText(jourSemainePetit(String.valueOf(selDate.getWeekOfYear())));
+            affichagePlanning.afficherTable(selDate.getWeekOfYear());
         }
 
         if (event.getSource() instanceof Button) {
@@ -58,6 +61,7 @@ public class Controleur implements EventHandler {
             }
             // Affichage
             HBoxRoot.getAffichagePlanning().numSemaine.setText(jourSemainePetit(String.valueOf(selDate.getWeekOfYear())));
+            affichagePlanning.afficherTable(selDate.getWeekOfYear());
         }
     }
 

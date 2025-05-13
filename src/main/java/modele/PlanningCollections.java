@@ -15,9 +15,7 @@ public class PlanningCollections {
 
     @Override
     public String toString() {
-        return "ArrayList: " + chListReservations.size() + " - " + chListReservations
-                + "\nTreeSet: " + chSetReservations.size() + " - " + chSetReservations
-                + "\nTreeMap: " + chMapReservations.size() + " - " + chMapReservations;
+        return "ArrayList: " + chListReservations.size() + " - " + chListReservations + "\nTreeSet: " + chSetReservations.size() + " - " + chSetReservations + "\nTreeMap: " + chMapReservations.size() + " - " + chMapReservations;
     }
 
     /**
@@ -44,26 +42,11 @@ public class PlanningCollections {
         if (sizeInitial == chSetReservations.size()) {
             throw new ExceptionPlanning(2);
         }
-        // ajout a la Map
-        int numSemaine = r.getDateSpectacle().getJour();
-        for (int i = 1; i < r.getDateSpectacle().getMois(); i++) {
-            switch (i) {
-                case 2:
-                    numSemaine += 28;
-
-                case 4:
-                case 6:
-                case 9:
-                case 11:
-                    numSemaine += 30;
-                default:
-                    numSemaine += 31;
-            }
+        int numSemaine = r.getDate().getWeekOfYear();
+        if (!chMapReservations.containsKey(numSemaine)) {
+            chMapReservations.put(numSemaine, new TreeSet<>());
         }
-        if (! chMapReservations.containsKey(numSemaine / 7)) {
-            chMapReservations.put(numSemaine / 7, new TreeSet<Reservation>());
-        }
-        chMapReservations.get(numSemaine / 7).add(r);
+        chMapReservations.get(numSemaine).add(r);
     }
 
     /**
@@ -76,9 +59,9 @@ public class PlanningCollections {
     public TreeSet<Reservation> getReservations(DateCalendrier parDate) {
         TreeSet<Reservation> reservationParDate = new TreeSet<Reservation>();
         for (Reservation r : chSetReservations) {
-            if (r.getDateSpectacle().compareTo(parDate) == 0) {
+            if (r.getDate().compareTo(parDate) == 0) {
                 reservationParDate.add(r);
-            } else if (r.getDateSpectacle().compareTo(parDate) > 0) {
+            } else if (r.getDate().compareTo(parDate) > 0) {
                 break;
             }
         }
@@ -98,7 +81,7 @@ public class PlanningCollections {
     public TreeSet<Reservation> getReservations(String parString) {
         TreeSet<Reservation> reservationString = new TreeSet<Reservation>();
         for (Reservation r : chSetReservations) {
-            if (r.getTitreSpectacle().toLowerCase().contains(parString.toLowerCase())) {
+            if (r.getSceance().toLowerCase().contains(parString.toLowerCase())) {
                 reservationString.add(r);
             }
         }
@@ -106,5 +89,18 @@ public class PlanningCollections {
             return null;
         }
         return reservationString;
+    }
+
+    public TreeSet<Reservation> getReservations() {
+        return (TreeSet<Reservation>) chSetReservations;
+    }
+
+    public Set<Reservation> getReservations(Integer numSemaine) {
+        if (chMapReservations.containsKey(numSemaine)) {
+            System.out.println(chMapReservations);
+            return chMapReservations.get(numSemaine);
+        }
+        System.out.println(chMapReservations);
+        return new TreeSet<>();
     }
 }

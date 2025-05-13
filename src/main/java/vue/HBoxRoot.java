@@ -3,6 +3,7 @@ package vue;
 import controleur.Controleur;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
+import modele.ExceptionPlanning;
 import modele.PlanningCollections;
 
 public class HBoxRoot extends HBox {
@@ -11,7 +12,15 @@ public class HBoxRoot extends HBox {
     private static Controleur chefOrchestre = new Controleur();
     private static VBoxCalendrier calendrierPane = new VBoxCalendrier();
     private static GridPaneCalendrierFormulaire revervasionPane = new GridPaneCalendrierFormulaire();
-    private static VBoxAffichagePlanning affichagePlanning = new VBoxAffichagePlanning();
+    private static VBoxAffichagePlanning affichagePlanning;
+
+    static {
+        try {
+            affichagePlanning = new VBoxAffichagePlanning();
+        } catch (ExceptionPlanning e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public HBoxRoot() {
         super(25);

@@ -24,7 +24,7 @@ public class GridPaneCalendrierFormulaire extends GridPane {
 
     public GridPaneCalendrierFormulaire() {
         super();
-        this.setGridLinesVisible(true);
+        this.setGridLinesVisible(false);
         this.setVgap(10);
         this.setHgap(10);
         this.setPrefSize(400, 400);
