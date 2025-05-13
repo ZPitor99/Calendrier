@@ -1,6 +1,6 @@
 ﻿# Calendrier
 
-Une application de gestion de calendrier développée en Java avec JavaFX. Cette application permet aux utilisateurs de gérer des réservations de théatre avec la mise à disposition d'un calendrier, et de selecteurs pour que l'utilisateur puisse définir ses réversations. Ceci sur une IHM intéractive.
+Une application de gestion de calendrier développée en Java avec JavaFX. Cette application permet aux utilisateurs de gérer des réservations de théâtre avec la mise à disposition d'un calendrier permettant de choisir la date, d'un sélecteurs pour que l'utilisateur puisse définir ses réservations et une table d'affichage pour présenter les pièces où il s'est inscrit. Ceci sur une IHM interactive.
 Développé avec une architecture modèle-vue-contrôleur.
 
 ![Image fenêtre principale](src/main/resources/readmeImg.jpg)
@@ -17,7 +17,7 @@ Développé avec une architecture modèle-vue-contrôleur.
 
 1. Téléchargez JavaFX SDK depuis [https://gluonhq.com/products/javafx/](https://gluonhq.com/products/javafx/) et Maven depuis [https://maven.apache.org/download.cgi](https://maven.apache.org/download.cgi)
 2. Extrayez l'archive téléchargée dans un dossier de votre choix
-3. Clonez ce dépôt Git ou téléchargez-le en ZIP
+3. Clonez ce dépôt Git ou téléchargez le en ZIP
 4. Compilez le projet avec Maven :
    
    ```
@@ -62,13 +62,13 @@ Calendrier/
 ├── src/
 │   ├── main/
 │   │   ├── java/        
-│   │   │   ├── modele/      # Classes de modèle
-│   │   │   ├── vue/         # Classes d'interface utilisateur
+│   │   │   ├── modele/
+│   │   │   ├── vue/
 │   │   │   └── module-info.java
-│   │   └── resources/       # Ressources (CSS, images)
+│   │   └── resources/       # Ressources (images, logos)
 ├── .idea/                   # Configuration IntelliJ
 ├── .mvn/wrapper             # Maven wrapper
-├── css/                     # Styles supplémentaires
+├── css/                     # Styles CSS
 ├── target/                  # Fichiers compilés (non présent)
 ├── pom.xml                  # Configuration Maven
 ├── mvnw                     # Compilation Linux
