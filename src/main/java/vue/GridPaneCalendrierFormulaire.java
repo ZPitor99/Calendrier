@@ -16,6 +16,7 @@ public class GridPaneCalendrierFormulaire extends GridPane {
 
     public Label dateClique = new Label("");
     public TextField nomSeanceField = new TextField();
+    public ToggleGroup radioGroupe = new ToggleGroup();
     public ComboBox<Integer> comboBoxHeureDebut;
     public ComboBox<Integer> comboBoxMinutesDebut;
     public ComboBox<Integer> comboBoxHeureFin;
@@ -39,20 +40,22 @@ public class GridPaneCalendrierFormulaire extends GridPane {
         nomSeanceField.setPromptText("Pièce de théatre");
         Platform.runLater(nomSeanceField::requestFocus);
 
+
         Label date = new Label("Date choisie");
         dateClique.setStyle("-fx-font-weight: 400;");
 
+
         Label emplacement = new Label("Emplacement");
         final String[] NIVEAUX = {"Balcon", "Loge", "Galerie"};
-        ToggleGroup radioGroupe = new ToggleGroup();
         HBox hbNiveau = new HBox(5);
         for (String s : NIVEAUX) {
             RadioButton radioButton = new RadioButton("_" + s);
             radioButton.setSelected(s.equals(NIVEAUX[0]));
-            radioButton.setUserData(NIVEAUX[0]);
+            radioButton.setUserData(s);
             radioButton.setToggleGroup(radioGroupe);
             hbNiveau.getChildren().add(radioButton);
         }
+
 
         ToggleGroup combo = new ToggleGroup();
         Label horaire = new Label("Horaire debut/fin");

@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
@@ -45,15 +46,21 @@ public class Controleur implements EventHandler {
 
         if (event.getSource() instanceof Button) {
             // Récupération
+            //Date
+            String[] words = HBoxRoot.getRevervasionPane().dateClique.getText().split(" ");
+            //Nom
             String nomSeance = HBoxRoot.getRevervasionPane().getNomSeance();
+            //Place
+            RadioButton selectedRadio = (RadioButton) HBoxRoot.getRevervasionPane().radioGroupe.getSelectedToggle();
+            String selectedNiveau = (String) selectedRadio.getUserData();
+            //Horaire
             Horaire debutSeance = new Horaire(HBoxRoot.getRevervasionPane().getComboBoxHeureDebut(), HBoxRoot.getRevervasionPane().getComboBoxMinutesDebut());
             Horaire finSeance = new Horaire(HBoxRoot.getRevervasionPane().getComboBoxHeureFin(), HBoxRoot.getRevervasionPane().getComboBoxMinutesFin());
-            String[] words = HBoxRoot.getRevervasionPane().dateClique.getText().split(" ");
-            // Création
+            // Création des éléments et ajout
             try {
                 selDate = new DateCalendrier(Integer.parseInt(words[1]), IndexMois(words[2], MOIS) + 1, Integer.parseInt(words[3]));
                 PlageHoraire maSeance = new PlageHoraire(debutSeance, finSeance);
-                Reservation SeanceTheatre = new Reservation(selDate, maSeance, nomSeance);
+                Reservation SeanceTheatre = new Reservation(selDate, maSeance, nomSeance, selectedNiveau);
                 planning.ajout(SeanceTheatre);
                 ajoutSeance(SeanceTheatre);
             } catch (ExceptionPlanning e) {
@@ -80,6 +87,7 @@ public class Controleur implements EventHandler {
         return "Semaine " + semaine;
     }
 
+    // Popup de confirmation
     public void ajoutSeance(Reservation seanceTheatre) {
         // Information sur l'ajout
         Stage popup = new Stage();
@@ -117,6 +125,7 @@ public class Controleur implements EventHandler {
 
         popupRoot.getChildren().addAll(boutons);
 
+        // Setup
         Scene popupScene = new Scene(popupRoot, 400, 200);
         File css = new File("css" + File.separator + "style.css");
         popupScene.getStylesheets().add(css.toURI().toString());

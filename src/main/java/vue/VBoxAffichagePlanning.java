@@ -48,7 +48,6 @@ public class VBoxAffichagePlanning extends VBox {
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         dateColumn.setCellFactory(column -> new TableCell<>() {
             private final Text text = new Text();
-
             {
                 text.wrappingWidthProperty().bind(column.widthProperty().subtract(10));
                 text.setStyle("-fx-padding: 5px;");
@@ -66,6 +65,7 @@ public class VBoxAffichagePlanning extends VBox {
                 }
             }
         });
+        dateColumn.setReorderable(Boolean.FALSE);
         // Colonne Séance
         sceanceColumn.setCellValueFactory(new PropertyValueFactory<>("sceance"));
         sceanceColumn.setCellFactory(column -> new TableCell<>() {
@@ -88,9 +88,12 @@ public class VBoxAffichagePlanning extends VBox {
                 }
             }
         });
+        sceanceColumn.setReorderable(Boolean.FALSE);
         // Les deux autres colonnes
         placeColumn.setCellValueFactory(new PropertyValueFactory<>("place"));
+        placeColumn.setReorderable(Boolean.FALSE);
         horaireColumn.setCellValueFactory(new PropertyValueFactory<>("horaire"));
+        horaireColumn.setReorderable(Boolean.FALSE);
 
         // Permettre à la table de s'agrandir avec la fenêtre
         VBox.setVgrow(tableDesReservations, Priority.ALWAYS);
@@ -100,7 +103,7 @@ public class VBoxAffichagePlanning extends VBox {
         tableDesReservations.setEditable(true);
         this.getChildren().addAll(tableDesReservations);
 
-        tableDesReservations.getItems().add(new Reservation(new DateCalendrier(), new PlageHoraire(new Horaire(19, 30), new Horaire(21, 45)), "McBeth"));
+        tableDesReservations.getItems().add(new Reservation(new DateCalendrier(), new PlageHoraire(new Horaire(19, 30), new Horaire(21, 45)), "McBeth", "Balcon"));
     }
 
     public void afficherTable(Integer num) {

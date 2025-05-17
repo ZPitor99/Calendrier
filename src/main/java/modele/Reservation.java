@@ -7,14 +7,16 @@ public class Reservation implements Comparable<Reservation> {
     private DateCalendrier dateSpectacle;
     private PlageHoraire plageHoraireSpectacle;
     private String TitreSpectacle;
+    private String PlaceSpectacle;
 
-    public Reservation(DateCalendrier parDateSpectacle, PlageHoraire parPlageHoraireSpectacle, String parTitreSpectacle) throws ExceptionPlanning {
+    public Reservation(DateCalendrier parDateSpectacle, PlageHoraire parPlageHoraireSpectacle, String parTitreSpectacle, String parPlaceSpectacle) throws ExceptionPlanning {
         if (parTitreSpectacle == null) {
             throw new ExceptionPlanning(0);
         }
         dateSpectacle = parDateSpectacle;
         plageHoraireSpectacle = parPlageHoraireSpectacle;
         TitreSpectacle = parTitreSpectacle;
+        PlaceSpectacle = parPlaceSpectacle;
     }
 
     @Override
@@ -23,7 +25,7 @@ public class Reservation implements Comparable<Reservation> {
     }
 
     public List<Object> toStringAjout() {
-        return Arrays.asList(TitreSpectacle, dateSpectacle, plageHoraireSpectacle);
+        return Arrays.asList(getSceance(), getDate(), getHoraire(), getPlace());
     }
 
 
@@ -48,6 +50,10 @@ public class Reservation implements Comparable<Reservation> {
 
     public String getSceance() {
         return TitreSpectacle;
+    }
+
+    public String getPlace() {
+        return PlaceSpectacle;
     }
 
     public boolean estValide() {
