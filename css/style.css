@@ -165,7 +165,7 @@
 .planning-table {
     -fx-background-color: #f5f8ff;
     -fx-border-color: #cccccc;
-    -fx-border-width: 1px;
+    -fx-border-width: 2px;
 }
 
 .planning-table .column-header {

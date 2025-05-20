@@ -131,6 +131,11 @@ public class GridPaneCalendrierFormulaire extends GridPane {
 
     }
 
+    /**
+     * Permet de peupler la comboBox à partir d'une lite d'integer
+     * @param peuple
+     * @return la comboBox peuplé grâce à l'argument
+     */
     private ComboBox<Integer> peupleComboBox(Integer[] peuple) {
         ComboBox<Integer> comboBox = new ComboBox<>();
         for (Integer s : peuple) {
@@ -139,22 +144,42 @@ public class GridPaneCalendrierFormulaire extends GridPane {
         return comboBox;
     }
 
+    /**
+     * Accesseur du texte du TextFiel du nom de la seance
+     * @return le texte du champ rempli par l'utilisateur
+     */
     public String getNomSeance() {
         return nomSeanceField.getText();
     }
 
+    /**
+     * Accesseur de la ComboBoxHeureDebut
+     * @return la valeur de la comboBox
+     */
     public Integer getComboBoxHeureDebut() {
         return comboBoxHeureDebut.getValue();
     }
 
+    /**
+     * Accesseur de la ComboBoxMinutesDebut
+     * @return la valeur de la comboBox
+     */
     public Integer getComboBoxMinutesDebut() {
         return comboBoxMinutesDebut.getValue();
     }
 
+    /**
+     * Accesseur de la ComboBoxHeureFin
+     * @return la valeur de la comboBox
+     */
     public Integer getComboBoxHeureFin() {
         return comboBoxHeureFin.getValue();
     }
 
+    /**
+     * Accesseur de la ComboBoxMinutesFin
+     * @return la valeur de la comboBox
+     */
     public Integer getComboBoxMinutesFin() {
         return comboBoxMinutesFin.getValue();
     }

@@ -98,14 +98,20 @@ public class VBoxAffichagePlanning extends VBox {
         // Permettre à la table de s'agrandir avec la fenêtre
         VBox.setVgrow(tableDesReservations, Priority.ALWAYS);
 
+        // Ajout et affichage
         tableDesReservations.getColumns().addAll(dateColumn, sceanceColumn, placeColumn, horaireColumn);
         tableDesReservations.setPrefSize(500, 400);
         tableDesReservations.setEditable(true);
         this.getChildren().addAll(tableDesReservations);
 
+        // Test au lancement
         tableDesReservations.getItems().add(new Reservation(new DateCalendrier(), new PlageHoraire(new Horaire(19, 30), new Horaire(21, 45)), "McBeth", "Balcon"));
     }
 
+    /**
+     * Met à jour la vue de l'affichage des réservations pour le numéro de semaine donné
+     * @param num
+     */
     public void afficherTable(Integer num) {
         tableDesReservations.getItems().clear();
         for (Reservation r : HBoxRoot.getPlanning().getReservations(num)) {

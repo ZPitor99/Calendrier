@@ -22,8 +22,8 @@ public class PlanningCollections {
      * Ajout de la reservation r dans les collections (chListReservations, chSetReservations et chMapReservations)
      * Leve ExceptionPlanning quand la reservation r n'est pas compatible avec les réservations déjà ajoutées.
      *
-     * @param r
-     * @throws ExceptionPlanning
+     * @param r la réservation à ajouter
+     * @throws ExceptionPlanning l'exception qui peut être levé
      */
     public void ajout(Reservation r) throws ExceptionPlanning {
         // ajout à la liste
@@ -97,10 +97,8 @@ public class PlanningCollections {
 
     public Set<Reservation> getReservations(Integer numSemaine) {
         if (chMapReservations.containsKey(numSemaine)) {
-            System.out.println(chMapReservations);
             return chMapReservations.get(numSemaine);
         }
-        System.out.println(chMapReservations);
         return new TreeSet<>();
     }
 }

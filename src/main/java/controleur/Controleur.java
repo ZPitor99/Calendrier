@@ -71,6 +71,12 @@ public class Controleur implements EventHandler {
         }
     }
 
+    /**
+     * Donne le numéro du mois dans tab
+     * @param mois le nom du mois
+     * @param tab le tableau de mois
+     * @return l'index du mois dans le tableau
+     */
     public int IndexMois(String mois, String[] tab) {
         for (int i = 0; i < tab.length; i++) {
             if (Objects.equals(tab[i], mois)) {
@@ -80,13 +86,24 @@ public class Controleur implements EventHandler {
         return - 1;
     }
 
+    /**
+     * Permet de modifier le numéro de ma semaine (str) en "Semaine" + "num"
+     * tel que num est à deux chiffres,
+     * ex: 1 -> 01
+     * ex: 35 -> 35
+     * @param semaine un numéro de semaine
+     * @return Semaine XX avec XX un nombre
+     */
     private String jourSemainePetit(String semaine) {
         if (semaine.length() < 2)
             return "Semaine 0" + semaine;
         return "Semaine " + semaine;
     }
 
-    // Popup de confirmation
+    /**
+     * Affiche un popup pour informer l'utilisateur de l'ajout d'une réservation au planning des réservations
+     * @param seanceTheatre la réservation qui a été ajouté
+     */
     public void ajoutSeance(Reservation seanceTheatre) {
         // Information sur l'ajout
         Stage popup = new Stage();

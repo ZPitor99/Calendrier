@@ -57,13 +57,4 @@ public class CalendrierDuMois {
     public String toString() {
         return treeSetDate.size() + " " + treeSetDate.toString();
     }
-
-    public int getMois() {
-        return mois;
-    }
-
-    public int getAnnee() {
-        return annee;
-    }
-
 }
