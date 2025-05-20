@@ -16,10 +16,11 @@ public class ClientApplication extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Calendrier Théatre");
-        stage.setResizable(false);
+        stage.setResizable(true);
         File css = new File("css" + File.separator + "style.css");
         scene.getStylesheets().add(css.toURI().toString());
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/logo.png"))));
+        stage.centerOnScreen();
         stage.show();
     }
 

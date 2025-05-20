@@ -6,6 +6,7 @@ public class PlageHoraire implements Comparable<PlageHoraire> {
     private Horaire horaireFin;
 
     public PlageHoraire(Horaire deb, Horaire fin) throws ExceptionPlanning {
+        System.out.println(deb + "" + fin);
         if (deb == null || fin == null) {
             throw new ExceptionPlanning(0);
         }

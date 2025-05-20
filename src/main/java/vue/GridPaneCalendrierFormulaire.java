@@ -42,7 +42,7 @@ public class GridPaneCalendrierFormulaire extends GridPane {
 
 
         Label date = new Label("Date choisie");
-        dateClique.setStyle("-fx-font-weight: 400;");
+        dateClique.setStyle("-fx-font-weight: 600;");
 
 
         Label emplacement = new Label("Emplacement");
@@ -109,7 +109,7 @@ public class GridPaneCalendrierFormulaire extends GridPane {
         this.add(nomSeanceField, 1, 1, 4, 1);
 
         this.add(date, 0, 2);
-        this.add(dateClique, 1, 2, 4, 1);
+        this.add(dateClique, 1, 2, 5, 1);
 
         this.add(emplacement, 0, 3);
         this.add(hbNiveau, 1, 3, 4, 1);

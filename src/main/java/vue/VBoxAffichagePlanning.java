@@ -40,9 +40,9 @@ public class VBoxAffichagePlanning extends VBox {
         placeColumn.setMinWidth(100);
         placeColumn.setMaxWidth(100);
 
-        horaireColumn.setPrefWidth(150);
-        horaireColumn.setMinWidth(150);
-        horaireColumn.setMaxWidth(150);
+        horaireColumn.setPrefWidth(130);
+        horaireColumn.setMinWidth(130);
+        horaireColumn.setMaxWidth(130);
 
         // Colonne Date
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));

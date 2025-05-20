@@ -42,8 +42,6 @@ public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
             tilePane.setVgap(10.0);
             tilePane.setHgap(10.0);
             tilePane.setPrefColumns(6);
-
-            //Une ligne pour lun,mar,mer,... et le reste pour les boutons date
             tilePane.setPrefRows(monthCalendar.getDates().size() / 7);
 
             //Marquage du tilePane
@@ -105,7 +103,6 @@ public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
         Button boutonStart = new Button("<<");
         boutonStart.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent actionEvent) {
-                System.out.println("bouton start");
                 while (! Objects.equals(liste.get(0).getAccessibleText(), MOIS[1])) {
                     liste.get(liste.size() - 1).toBack();
                 }
@@ -118,7 +115,6 @@ public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
         Button boutonBefore = new Button("<");
         boutonBefore.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent actionEvent) {
-                System.out.println("bouton before");
                 liste.get(liste.size() - 1).toBack();
             }
         });
@@ -129,7 +125,6 @@ public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
         Button boutonNext = new Button(">");
         boutonNext.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent actionEvent) {
-                System.out.println("bouton next");
                 liste.get(0).toFront();
             }
         });
@@ -140,7 +135,6 @@ public class VBoxCalendrier extends VBox implements ConstantesCalendrier {
         Button boutonEnd = new Button(">>");
         boutonEnd.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent actionEvent) {
-                System.out.println("bouton end");
                 while (! Objects.equals(liste.get(0).getAccessibleText(), MOIS[0])) {
                     liste.get(0).toFront();
                 }

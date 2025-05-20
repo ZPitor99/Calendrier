@@ -31,7 +31,6 @@ public class Controleur implements EventHandler {
     @Override
     public void handle(Event event) {
         PlanningCollections planning = HBoxRoot.getPlanning();
-        GridPaneCalendrierFormulaire reservationPane = HBoxRoot.getRevervasionPane();
         VBoxAffichagePlanning affichagePlanning = HBoxRoot.getAffichagePlanning();
 
         DateCalendrier selDate;
